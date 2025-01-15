@@ -1,0 +1,150 @@
+/* Modern Autumn Weather App Styles */
+
+:root {
+    --primary-color: #D35400;      /* Burnt orange */
+    --secondary-color: #8B4513;    /* Saddle brown */
+    --accent-color: #CD853F;       /* Peru */
+    --background-color: #FDF5E6;   /* Old lace */
+    --card-background: #FFFFFF;    /* White */
+    --text-primary: #2C3E50;       /* Dark slate gray */
+    --text-secondary: #7F8C8D;     /* Gray */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+#div-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+#div-ui {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    display: flex;
+    gap: 1rem;
+}
+
+#search-term {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#search-term:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(211, 84, 0, 0.1);
+}
+
+#btn-update-weather {
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btn-update-weather:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#div-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.weather-card {
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px var(--shadow-color);
+    transition: all 1s ease;
+}
+
+.weather-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--shadow-color);
+}
+
+.weather-date {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.weather-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.weather-temps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 2px solid var(--background-color);
+}
+
+.temp-max {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.temp-current {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.temp-min {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    #div-header {
+        font-size: 2rem;
+    }
+    
+    #div-ui {
+        flex-direction: column;
+    }
+    
+    #btn-update-weather {
+        width: 100%;
+    }
+}

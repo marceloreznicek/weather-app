@@ -1,12 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
+  mode: 'development',
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-    clean: true
+    filename: 'main.js',
+    path: path.resolve('dist'),
+    clean: true,
   },
   module: {
     rules: [
@@ -16,23 +17,28 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
-      }
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
-  ]
+      template: './src/index.html',
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.resolve('dist'),
+    },
+    compress: true,
+    port: 9000,
+    hot: true,
+    open: true,
+  },
 };
